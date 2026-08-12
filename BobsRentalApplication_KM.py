@@ -1,3 +1,7 @@
+#-----------------------------------------------------------------------
+# Import the provided classes from the other files
+#-----------------------------------------------------------------------
+
 from ski import Ski
 from snowboard import Snowboard
 from customer import Customer
@@ -5,7 +9,9 @@ from rental_shop import RentalShop
 from rental import Rental
 
 
-
+#-----------------------------------------------------------------------
+# Validation Methods
+#-----------------------------------------------------------------------
 
 
 def Validate_Ski_Inventory():
@@ -24,6 +30,9 @@ def Validate_Ski_Inventory():
 
     return intSk
 
+
+
+
 def Validate_Snowboard_Inventory():
 
     blnVlaidated = bool(False)
@@ -39,6 +48,8 @@ def Validate_Snowboard_Inventory():
              print("Inventory must be a number.")
 
     return intSB
+
+
 
 
 def Validate_Menu_Selection():
@@ -57,6 +68,9 @@ def Validate_Menu_Selection():
 
     return intMenuSelection
 
+
+
+
 def ValidateName():
 
     blnValidated = bool(False)
@@ -68,6 +82,9 @@ def ValidateName():
             blnValidated = True
             return intName
 
+
+
+
 def ValidateCustomerID():
 
     blnValidated = bool(False)
@@ -78,6 +95,9 @@ def ValidateCustomerID():
         else:
             blnValidated = True
             return intID
+
+
+
 
 def Validate_Ski_Rental():
 
@@ -98,6 +118,7 @@ def Validate_Ski_Rental():
 
 
 
+
 def Validate_Snowboard_Rental():
     
     blnVlaidated = bool(False)
@@ -115,6 +136,9 @@ def Validate_Snowboard_Rental():
         except :
              print("Quantity must be a number.")
 
+
+
+
 def Validate_Rental_Period():
 
     blnVlaidated = bool(False)
@@ -126,6 +150,9 @@ def Validate_Rental_Period():
         else:
             blnVlaidated = True
             return strRentalPeriod
+
+
+
 
 def Validate_Length(strHoursDaysWeeks):
 
@@ -141,6 +168,18 @@ def Validate_Length(strHoursDaysWeeks):
                 return intLength
         except :
              print("Quantity must be a number.")
+
+
+
+
+#-----------------------------------------------------------------------
+# Method: New_Customer_Rental
+# This method is for the first option of the main menu, New Customer Rental.
+# This method calls the validation methods and stores the input into
+# variables. It then uses the provided classes to add skis/snowboards to 
+# the rental and calculate the estimate. It then prompts the user to complete 
+# the rental or return to the main menu.
+#-----------------------------------------------------------------------
 
 
 def New_Customer_Rental():
@@ -198,6 +237,17 @@ def New_Customer_Rental():
         return
     else:
         print("Please enter 'yes' or 'no'.")
+
+
+
+
+#-----------------------------------------------------------------------
+# Method: Rental_Return
+# This method is for the second option of the main menu, Rental Return.
+# This method calls the validation methods and stores the input into
+# variables. It then uses the provided classes to calculate the final bill.
+# It then prompts the user to complete the return or return to the main menu.
+#-----------------------------------------------------------------------
 
 def Rental_Return():
     
@@ -281,6 +331,16 @@ def Rental_Return():
         print("Please enter 'yes' or 'no'.")
         return
 
+
+
+
+#-----------------------------------------------------------------------
+# Method: Show_Inventory
+# This method is for the third option of the main menu, Show Inventory.
+# This method displays the current inventory of skis and snowboards.
+#-----------------------------------------------------------------------
+    
+
 def Show_Inventory():
 
     print("")
@@ -288,6 +348,18 @@ def Show_Inventory():
     print("Ski Inventory:", Rental_Shop_obj.ski_inventory.quantity_available)
     print("Snowboard Inventory:", Rental_Shop_obj.snowboard_inventory.quantity_available)
     print("-----------------------------")
+
+
+
+
+#-----------------------------------------------------------------------
+# Method: End_Of_Day
+# This method is for the fourth option of the main menu, End of Day.
+# This method displays the total number of skis and snowboards rented
+# and the total revenue for the day. It then sets the blnEndOfDay variable to True
+# to exit the main loop.
+#-----------------------------------------------------------------------
+
 
 def End_Of_Day():
 
@@ -299,6 +371,16 @@ def End_Of_Day():
     print("-----------------------------")
     global blnEndOfDay
     blnEndOfDay = True
+
+
+
+
+#-----------------------------------------------------------------------
+# Method: Main_Menu
+# This method displays the main menu and prompts the user for a selection.
+# It then calls the Validate_Menu_Selection method to validate the input and returns
+# the selection to the main loop.
+#-----------------------------------------------------------------------
 
 def Main_Menu():
 
@@ -320,11 +402,13 @@ def Main_Menu():
 
 
 
+#-----------------------------------------------------------------------
+# Method: main
+# This method is the main loop of the program. It initializes the rental shop
+# and the active rentals list. It then displays the main menu and prompts the user for a
+# selection. It then calls the appropriate method based on the selection.
+#-----------------------------------------------------------------------
 
-
-#-------------------------------------------------------------------
-# Main
-#-------------------------------------------------------------------
 
 lstActiveRentals = []
 
@@ -347,4 +431,4 @@ while blnEndOfDay == False:
         Show_Inventory()
     else:
         End_Of_Day()
-  
+
